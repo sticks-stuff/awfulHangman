@@ -1,0 +1,75 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>The HTML5 Herald</title>
+	<meta name="description" content="The HTML5 Herald">
+	<meta name="author" content="SitePoint">
+
+	<link rel="stylesheet" href="styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script></head>
+
+<body>
+	<div id="game">
+		<div id="instructions">
+			The word is
+		</div>
+		<div id="word">
+			THIS IS A BIG WORD
+		</div>
+	</div>
+	<div id="info">
+		<div id="infotext">
+			KANNADA LETTER AA
+		</div>
+	</div>
+	<div id="buttons">
+
+	</div>
+	<div data-loader="ajax" data-src="buttons01.html" data-src="buttons02.html"></div>
+	<!-- <div data-loader="ajax" data-src="buttons02.html"></div> -->
+	<script src="https://raw.githack.com/rikschennink/fitty/gh-pages/dist/fitty.min.js"></script>
+	<script>
+		fitty('#infotext', {
+			minSize: 12,
+			maxSize: 100
+		  });
+		$(function() {
+			$("div[data-src]").lazy({
+				chainable: false,
+				afterLoad: function(element) {
+					console.log("loaded succ");
+					document.getElementById("buttons").innerHTML += element[0].innerHTML;
+					$(element).remove();
+				}
+			});
+			
+		})
+
+		$(window).scroll(function() {
+			// when the scroll reaches the bottom
+			if($('body').scrollTop()+$(window).height() >= $('body').height() - 20) {
+				// load more content
+				loadMore();
+			}
+		});
+
+		// remember where to continue, 0 at the beginning.
+		var part_loaded = 0;
+
+		function loadMore() {
+			$.get('buttons.html?part='+part_loaded++, function(data) {
+				console.log(data);
+				// do the content append action here. 
+			});
+		}
+	</script>
+	<script src="scripts.js"></script>
+</body>
+
+</html>
