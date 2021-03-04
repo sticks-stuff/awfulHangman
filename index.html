@@ -17,10 +17,10 @@
 <body>
 	<div id="game">
 		<div id="instructions">
-			The word is
+			Hangman but with 123,813 characters
 		</div>
 		<div id="word">
-			THIS IS A BIG WORD
+			_ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 		</div>
 	</div>
 	<div id="info">
@@ -31,11 +31,11 @@
 	<div id="buttons">
 
 	</div>
-	<div data-loader="ajax" data-src="buttons01.html"></div>
+	<div data-loader="ajax" data-src="buttons-00.html"></div>
 	<!-- <div data-loader="ajax" data-src="buttons02.html"></div> -->
 	<script src="https://raw.githack.com/rikschennink/fitty/gh-pages/dist/fitty.min.js"></script>
 	<script>
-		var loadedItems = 2;
+		var loadedItems = 1;
 		fitty('#infotext', {
 			minSize: 12,
 			maxSize: 100
@@ -53,7 +53,7 @@
 			console.log("loaded ");
 			document.getElementById("buttons").innerHTML += element[0].innerHTML;
 			$(element).remove();
-			var newLazy = $('<div data-loader="ajax" data-src="buttons' + (loadedItems++).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) +'.html"></div>');
+			var newLazy = $('<div data-loader="ajax" data-src="buttons-' + (loadedItems++).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) +'.html"></div>');
 			$('body').append(newLazy);
 			$("div[data-src]").lazy({
 				chainable: false,
