@@ -31,10 +31,11 @@
 	<div id="buttons">
 
 	</div>
-	<div data-loader="ajax" data-src="buttons01.html" data-src="buttons02.html"></div>
+	<div data-loader="ajax" data-src="buttons01.html"></div>
 	<!-- <div data-loader="ajax" data-src="buttons02.html"></div> -->
 	<script src="https://raw.githack.com/rikschennink/fitty/gh-pages/dist/fitty.min.js"></script>
 	<script>
+		var loadedItems = 2;
 		fitty('#infotext', {
 			minSize: 12,
 			maxSize: 100
@@ -43,29 +44,22 @@
 			$("div[data-src]").lazy({
 				chainable: false,
 				afterLoad: function(element) {
-					console.log("loaded succ");
-					document.getElementById("buttons").innerHTML += element[0].innerHTML;
-					$(element).remove();
+					loadMore(element);
 				}
 			});
-			
 		})
 
-		$(window).scroll(function() {
-			// when the scroll reaches the bottom
-			if($('body').scrollTop()+$(window).height() >= $('body').height() - 20) {
-				// load more content
-				loadMore();
-			}
-		});
-
-		// remember where to continue, 0 at the beginning.
-		var part_loaded = 0;
-
-		function loadMore() {
-			$.get('buttons.html?part='+part_loaded++, function(data) {
-				console.log(data);
-				// do the content append action here. 
+		function loadMore(element) {
+			console.log("loaded ");
+			document.getElementById("buttons").innerHTML += element[0].innerHTML;
+			$(element).remove();
+			var newLazy = $('<div data-loader="ajax" data-src="buttons' + (loadedItems++).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) +'.html"></div>');
+			$('body').append(newLazy);
+			$("div[data-src]").lazy({
+				chainable: false,
+				afterLoad: function(element) {
+					loadMore(element);
+				}
 			});
 		}
 	</script>
