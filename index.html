@@ -32,37 +32,7 @@
 
 	</div>
 	<div data-loader="ajax" data-src="buttons-00.html"></div>
-	<!-- <div data-loader="ajax" data-src="buttons02.html"></div> -->
 	<script src="https://raw.githack.com/rikschennink/fitty/gh-pages/dist/fitty.min.js"></script>
-	<script>
-		var loadedItems = 1;
-		fitty('#infotext', {
-			minSize: 12,
-			maxSize: 100
-		  });
-		$(function() {
-			$("div[data-src]").lazy({
-				chainable: false,
-				afterLoad: function(element) {
-					loadMore(element);
-				}
-			});
-		})
-
-		function loadMore(element) {
-			console.log("loaded ");
-			document.getElementById("buttons").innerHTML += element[0].innerHTML;
-			$(element).remove();
-			var newLazy = $('<div data-loader="ajax" data-src="buttons-' + (loadedItems++).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false}) +'.html"></div>');
-			$('body').append(newLazy);
-			$("div[data-src]").lazy({
-				chainable: false,
-				afterLoad: function(element) {
-					loadMore(element);
-				}
-			});
-		}
-	</script>
 	<script src="scripts.js"></script>
 </body>
 
