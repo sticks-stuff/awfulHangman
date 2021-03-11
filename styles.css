@@ -86,3 +86,7 @@ button:hover {
 	display: none;
 	font-weight: bolder;
 }
+
+#ad {
+	font-size: 0.5em;
+}
