@@ -64,4 +64,4 @@ io.on('connection', (socket) => {
     port, 
     () => console.log(`Express server running on port ${port}`)
   )
-)(3000)
+)(process.env.PORT || 3000)
