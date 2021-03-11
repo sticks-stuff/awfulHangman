@@ -29,10 +29,8 @@ function loadMore(element) {
 
 const infoDiv = document.getElementById("info");
 const infotext = document.getElementById("infotext");
-const word = "This is a large word";
-var wordHidden = word.replace(/\S/g, "̲");
-document.getElementById("word").innerHTML = wordHidden;
-$("#word").lettering();
+var word = "dummy";
+var wordHidden = "dummy";
 
 function showDetails(button) {
 	infoDiv.style.display = "flex";
@@ -46,30 +44,11 @@ function hideDetails() {
 
 function guess(button) {
 	var guessedCodepoint = button.getAttribute("data-codepoint");
-	var guessedChar = (String.fromCodePoint(guessedCodepoint));
-	console.log(guessedChar);
-	var indexLocations = getAllIndexes(word, guessedChar);
-	console.log(indexLocations);
-	if(indexLocations.length > 0) {
-		console.log("here");
-		for(i = 0; i < indexLocations.length; i++) {
-			console.log(indexLocations[i]);
-			wordHidden = replaceAt(wordHidden, indexLocations[i], guessedChar)
-			document.getElementById("word").innerHTML = wordHidden;
-			$("#word").lettering();
-		}
-	}
+	socket.emit('guess', guessedCodepoint);
 	document.documentElement.scrollTop = 0; 
 } 
 
-function getAllIndexes(arr, val) {
-    var indexes = [], i;
-    for(i = 0; i < arr.length; i++)
-        if (arr[i] === val)
-            indexes.push(i);
-    return indexes;
-}
-
-function replaceAt(str, index, ch) {
-    return str.replace(/./g, (c, i) => i == index ? ch : c);
-}
+const socket = io('ws://192.168.1.64:3000');
+socket.on('word is', res => { 
+	document.getElementById('word').innerHTML = res;
+});
