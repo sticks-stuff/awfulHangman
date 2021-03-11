@@ -45,7 +45,7 @@ function hideDetails() {
 function guess(button) {
 	var guessedCodepoint = button.getAttribute("data-codepoint");
 	socket.emit('guess', guessedCodepoint);
-	document.documentElement.scrollTop = 0; 
+	//document.documentElement.scrollTop = 0; 
 } 
 
 const socket = io('ws://awfulhangman.herokuapp.com');
