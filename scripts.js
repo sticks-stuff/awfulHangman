@@ -48,7 +48,7 @@ function guess(button) {
 	document.documentElement.scrollTop = 0; 
 } 
 
-const socket = io('ws://192.168.1.64:3000');
+const socket = io('ws://awfulhangman.herokuapp.com');
 socket.on('word is', res => { 
 	document.getElementById('word').innerHTML = res;
 });
