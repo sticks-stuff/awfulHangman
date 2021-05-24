@@ -57,6 +57,20 @@ io.on('connection', (socket) => {
       }
     }
   });
+  socket.on("win", (guessedCodepoint) => {
+    console.log(guessedCodepoint);
+    var guessedChar = (String.fromCodePoint(guessedCodepoint));
+    console.log(guessedChar);
+    var indexLocations = getAllIndexes(word, guessedCodepoint);
+    if(indexLocations.length > 0) {
+      console.log(`Successful Guess!! (codepoint=${guessedCodepoint})`)
+      for(i = 0; i < indexLocations.length; i++) {
+        // console.log(indexLocations[i]);
+        wordHidden = replaceAt(wordHidden, indexLocations[i], guessedChar)
+        io.emit('word is', generateHiddenHTML(word))
+      }
+    }
+  });
 });
 
 (
