@@ -20,7 +20,7 @@ function replaceAt(str, index, ch) {
   return str.replace(/./g, (c, i) => i == index ? ch : c);
 }
 
-var word = "👌👀👌👀👌👀👌👀👌👀 good shit go౦ԁ sHit👌 thats ✔ some good👌👌shit right👌👌there👌👌👌 right✔there ✔✔if i do ƽaү so my self 💯 i say so 💯 thats what im talking about right there right there (chorus: ʳᶦᵍʰᵗ ᵗʰᵉʳᵉ) mMMMMᎷМ💯 👌👌 👌НO0ОଠOOOOOОଠଠOoooᵒᵒᵒᵒᵒᵒᵒᵒᵒ👌 👌👌 👌 💯 👌 👀 👀 👀 👌👌Good shit"
+var word = "Call 📞 me when ⏱️ you want 😩 Call ☎️ me when 🗓️you need 🤤 Call 📱 me in the 👅 morning 🌅 I'll 🧔 be ☺️ on the way ✈️ Call 📲 me when 🕐 you want Call 📳 me when 🕰️ you need Call 🤳 me in the mornin 🌅 I'll 🧍‍♂️ be on the way 🏃🏽‍♂️, like👍 Mm, 🥵 mm, 🍑 mm 😋 Mm, 🍆 mm, 👅 mm 😩"
 var wordHidden = word.replace(/\S/g, "_");
 
 
