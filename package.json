@@ -15,6 +15,6 @@
     "request": "^2.88.2",
     "safe-code-point": "^2.0.0",
     "scramjet": "^4.35.12",
-    "socket.io": "^4.0.0"
+    "socket.io": "^4.5.3"
   }
 }
