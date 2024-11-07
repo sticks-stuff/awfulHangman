@@ -48,7 +48,7 @@ function guess(button) {
 	//document.documentElement.scrollTop = 0; 
 } 
 
-const socket = io('ws://awfulhangman.herokuapp.com');
+const socket = io('ws://boiling-karoline-sticks-stuff-ded1b11d.koyeb.app/');
 socket.on('word is', res => { 
 	document.getElementById('word').innerHTML = res;
 });
